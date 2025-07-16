@@ -21,7 +21,7 @@
           <label for="pw-length">
             Password Length (8 - 20):
           </label>
-          <input type="number" name="length" id="pw-length" min="8" max="20">
+          <input type="number" name="length" id="pw-length" min="8" max="20" value="8">
         </div>
 
         <div class="wrapper my-5 d-flex justify-content-between px-5">

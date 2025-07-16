@@ -24,6 +24,12 @@ if (isset($_GET['length'])) {
     // initialize final characters string: starts empty
     $chars = "";
 
+    // check if at least one character group is selected
+    if (!key_exists("letters", $_GET) && !key_exists("numbers", $_GET) && !key_exists("symbols", $_GET)) {
+      echo "<div class=' alert alert-danger mt-3'>Select at least one group of characters</div>";
+      return;
+    }
+
     // cycle each character group's key. For each key then cycle $_GET keys. If a match is found add the value of that character group to the final string
     foreach ($all_chars as $key => $value) {
       foreach ($_GET as $GET_key => $GET_value) {
@@ -64,6 +70,6 @@ if (isset($_GET['length'])) {
     header("Location: ./result.php");
   } else {
 
-    echo "<div class='alert alert-btn mt-3'>Please enter a number between 8 and 20</div>";
+    echo "<div class='alert alert-danger mt-3'>Please enter a number between 8 and 20</div>";
   }
 }
