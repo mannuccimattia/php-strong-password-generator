@@ -1,4 +1,6 @@
 <?php
+// starting session
+session_start();
 
 // if length is set, assign it to a variable
 if (isset($_GET['length'])) {
@@ -23,8 +25,7 @@ if (isset($_GET['length'])) {
       $password .= $chars[random_int(0, strlen($chars) - 1)];
     }
 
-    echo "<h3>Your password:</h3>";
-    echo "<div><strong>$password</strong></div>";
+    $_SESSION["password"] = $password;
     header("Location: ./result.php");
   } else {
 
