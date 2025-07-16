@@ -25,6 +25,7 @@ if (isset($_GET['length'])) {
 
     echo "<h3>Your password:</h3>";
     echo "<div><strong>$password</strong></div>";
+    header("Location: ./result.php");
   } else {
 
     echo "<p style='color:red;'>Please enter a number between 8 and 20</p>";

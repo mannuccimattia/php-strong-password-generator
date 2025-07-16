@@ -14,6 +14,7 @@
 
   <h1>Strong Password Generator</h1>
 
+
   <form method="GET">
     <label>
       Password Length (8 - 20):
