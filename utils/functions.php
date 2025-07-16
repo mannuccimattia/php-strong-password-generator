@@ -47,20 +47,22 @@ if (isset($_GET['length'])) {
 
       // logic if unique characters is set
       if (isset($_GET["unique"])) {
-        // Check if we have enough unique characters available
+        // check if there are enough unique characters available
         if (strlen($chars) < $length) {
           echo "<div class='alert alert-danger mt-3'>Cannot generate unique password: not enough character types selected for length $length</div>";
           return;
         }
 
-        // Keep trying until we find a unique character
+        // get a random character from chars, if already present in password get a new one until unique
         do {
           $bit = $chars[random_int(0, strlen($chars) - 1)];
         } while (str_contains($password, $bit));
 
+        // add character to password
         $password .= $bit;
       } else {
         // logic if not unique characters
+        // get a random character from chars and add it to password
         $bit = $chars[random_int(0, strlen($chars) - 1)];
         $password .= $bit;
       }
@@ -69,7 +71,7 @@ if (isset($_GET['length'])) {
     $_SESSION["password"] = $password;
     header("Location: ./result.php");
   } else {
-
+    // alert if length is out of range (url param edit)
     echo "<div class='alert alert-danger mt-3'>Please enter a number between 8 and 20</div>";
   }
 }

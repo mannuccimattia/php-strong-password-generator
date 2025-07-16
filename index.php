@@ -12,7 +12,6 @@
 
     <h1 class="fw-bold text-primary mb-5">Strong Password Generator</h1>
 
-
     <form method="GET">
 
       <div class="input-group flex-column  w-50 m-auto bg-secondary rounded p-3">
@@ -31,14 +30,17 @@
 
         <div class="wrapper">
           <h6 class="fw-bold">Choose one or more</h6>
+
           <div class="d-flex justify-content-between px-5">
             <label for="pw-letters">Letters</label>
             <input type="checkbox" name="letters" id="pw-letters">
           </div>
+
           <div class="d-flex justify-content-between px-5">
             <label for="pw-numbers">Numbers</label>
             <input type="checkbox" name="numbers" id="pw-numbers">
           </div>
+
           <div class="d-flex justify-content-between px-5">
             <label for="pw-symbols">Symbols</label>
             <input type="checkbox" name="symbols" id="pw-symbols">
@@ -46,7 +48,6 @@
         </div>
 
       </div>
-
 
       <button type="submit" class="btn btn-primary mt-5">Generate</button>
 
