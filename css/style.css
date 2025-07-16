@@ -1,0 +1,10 @@
+body {
+  background-color: rgb(37, 37, 68);
+}
+
+.container-custom {
+  max-width: 998px;
+  margin: 150px auto 0;
+  text-align: center;
+  padding: 3rem;
+}

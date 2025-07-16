@@ -9,7 +9,7 @@ if (isset($_GET['length'])) {
   // if length is empty, alert user and exit
   if ($_GET['length'] === "") {
 
-    echo "<p style='color:red;'>Insert a value from 8 to 20</p>";
+    echo "<div class=' alert alert-danger mt-3'>Insert a value from 8 to 20</div>";
     return;
   } elseif (is_numeric($length) && $length >= 8 && $length <= 20) {
     // length is valid and within range, proceed generation
@@ -43,7 +43,7 @@ if (isset($_GET['length'])) {
       if (isset($_GET["unique"])) {
         // Check if we have enough unique characters available
         if (strlen($chars) < $length) {
-          echo "<p style='color:red;'>Cannot generate unique password: not enough character types selected for length $length</p>";
+          echo "<div class='alert alert-danger mt-3'>Cannot generate unique password: not enough character types selected for length $length</div>";
           return;
         }
 
@@ -64,6 +64,6 @@ if (isset($_GET['length'])) {
     header("Location: ./result.php");
   } else {
 
-    echo "<p style='color:red;'>Please enter a number between 8 and 20</p>";
+    echo "<div class='alert alert-btn mt-3'>Please enter a number between 8 and 20</div>";
   }
 }
