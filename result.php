@@ -11,11 +11,15 @@
 
 <body>
   <h1>Your password</h1>
+
   <div>
     <strong>
       <?php echo $_SESSION["password"] ?>
     </strong>
   </div>
+
+  <a href="./index.php">Generate again</a>
+
 </body>
 
 </html>

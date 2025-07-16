@@ -12,17 +12,52 @@ if (isset($_GET['length'])) {
     echo "<p style='color:red;'>Insert a value from 8 to 20</p>";
     return;
   } elseif (is_numeric($length) && $length >= 8 && $length <= 20) {
-
     // length is valid and within range, proceed generation
-    // string with all possible characters
-    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!$%&?^+*-_.:,;";
 
-    // generated password string: starts empty
+    // array of all possible characters
+    $all_chars = [
+      "letters" => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "numbers" => "0123456789",
+      "symbols" => "!$%&?^+*-_.:,;"
+    ];
+
+    // initialize final characters string: starts empty
+    $chars = "";
+
+    // cycle each character group's key. For each key then cycle $_GET keys. If a match is found add the value of that character group to the final string
+    foreach ($all_chars as $key => $value) {
+      foreach ($_GET as $GET_key => $GET_value) {
+        if ($GET_key === $key) {
+          $chars .= $value;
+        }
+      }
+    }
+
+    // initialized generated password string: starts empty
     $password = '';
 
     // cycle to pick a character from chars string with a random index
     for ($i = 0; $i < $length; $i++) {
-      $password .= $chars[random_int(0, strlen($chars) - 1)];
+
+      // logic if unique characters is set
+      if (isset($_GET["unique"])) {
+        // Check if we have enough unique characters available
+        if (strlen($chars) < $length) {
+          echo "<p style='color:red;'>Cannot generate unique password: not enough character types selected for length $length</p>";
+          return;
+        }
+
+        // Keep trying until we find a unique character
+        do {
+          $bit = $chars[random_int(0, strlen($chars) - 1)];
+        } while (str_contains($password, $bit));
+
+        $password .= $bit;
+      } else {
+        // logic if not unique characters
+        $bit = $chars[random_int(0, strlen($chars) - 1)];
+        $password .= $bit;
+      }
     }
 
     $_SESSION["password"] = $password;
